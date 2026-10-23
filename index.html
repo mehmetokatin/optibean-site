@@ -645,6 +645,8 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
 @media (max-width:860px){.hero.play .wrap{grid-template-columns:1fr}.hero-brand{order:-1;width:min(300px,78%)}}
 
 @media (max-width:860px){.hero .spot.more{display:none}}
+@media (max-width:1100px){.hero .spot.nx{display:none}}
+@media (max-width:600px){.hero .spot.nm{display:none}}
 /* SSS */
 .faq{background:var(--cream);border-top:2px solid var(--ink)}
 .faq-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
@@ -706,12 +708,12 @@ section.block.kvkk{padding-block:28px;border-top:2px solid var(--ink)}
 
 <main id="top">
   <section class="hero play" id="hero">
-    <div class="spot" style="width:240px;height:180px;left:-80px;top:-60px"></div>
-    <div class="spot" style="width:170px;height:130px;right:-50px;bottom:-40px;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
-    <div class="spot" style="width:64px;height:50px;left:46%;top:26px"></div>
-    <div class="spot" style="width:44px;height:36px;left:8%;bottom:40px;border-radius:50% 40% 55% 45%"></div>
+    <div class="spot" style="width:150px;height:110px;left:-90px;top:-55px"></div>
+    <div class="spot nm" style="width:170px;height:130px;right:-50px;bottom:-40px;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
+    <div class="spot" style="width:54px;height:42px;left:49%;top:14px"></div>
+    <div class="spot nx" style="width:40px;height:32px;left:-12px;bottom:70px;border-radius:50% 40% 55% 45%"></div>
     <div class="spot" style="width:120px;height:90px;right:30%;bottom:-50px;border-radius:55% 45% 40% 60% / 50% 55% 45% 50%"></div>
-    <div class="spot" style="width:38px;height:30px;left:47%;bottom:30%"></div>
+    <div class="spot nx" style="width:30px;height:24px;left:50%;bottom:22%"></div>
     <div class="spot more" style="width:90px;height:66px;left:52%;top:6%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
     <div class="spot more" style="width:46px;height:36px;right:22%;top:4%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
     <div class="spot more" style="width:70px;height:56px;right:3%;top:18%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
@@ -720,9 +722,9 @@ section.block.kvkk{padding-block:28px;border-top:2px solid var(--ink)}
     <div class="spot more" style="width:58px;height:44px;right:34%;bottom:12%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
     <div class="spot more" style="width:22px;height:18px;left:58%;bottom:22%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
     <div class="spot more" style="width:40px;height:32px;right:2%;bottom:30%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
-    <div class="spot more" style="width:54px;height:70px;left:1%;top:42%;border-radius:50% 40% 55% 45%"></div>
-    <div class="spot more" style="width:26px;height:22px;left:3%;bottom:8%;border-radius:45% 55% 60% 40% / 55% 45% 55% 45%"></div>
-    <div class="spot more" style="width:36px;height:26px;left:28%;top:3%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
+    <div class="spot more nx" style="width:46px;height:60px;left:-24px;top:46%;border-radius:50% 40% 55% 45%"></div>
+    <div class="spot more" style="width:26px;height:22px;left:24%;bottom:5%;border-radius:45% 55% 60% 40% / 55% 45% 55% 45%"></div>
+    <div class="spot more" style="width:30px;height:22px;left:36%;top:2%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
     <div class="spot more" style="width:48px;height:34px;left:44%;bottom:4%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
     <div class="spot more" style="width:20px;height:16px;right:44%;top:16%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
     <div class="spot more" style="width:24px;height:20px;right:16%;bottom:6%;border-radius:50% 40% 55% 45%"></div>
@@ -836,7 +838,8 @@ section.block.kvkk{padding-block:28px;border-top:2px solid var(--ink)}
         <div class="cv-text">
           <span class="soon">Çok yakında</span>
           <h2>OptiBean karavanı yolda</h2>
-          <p>Doğum gününüze, düğününüze, şirket etkinliğinize ya da okul şenliğinize dondurmayı biz getiriyoruz. Karavanımızda dondurma vitrini, espresso makinesi ve paslanmaz servis tezgâhı olacak. Misafirleriniz dondurmalarını ve kahvelerini taze taze karavandan alacak.</p>
+          <p>Doğum günü, düğün, şirket etkinliği ve okul şenliği gibi organizasyonlarınıza dondurmayı biz getiriyoruz. Karavanımızda 12 kovalık dondurma vitrini, espresso makinesi ve paslanmaz çelik servis tezgâhı yer alacak. Misafirleriniz dondurmalarını ve kahvelerini doğrudan karavandan, taze olarak alabilecek.</p>
+          <p>Etkinlik süresince iki kişilik ekibimiz servis yapacak; karavan hem şebeke elektriğiyle hem de jeneratörle çalışabildiği için elektrik olmayan alanlarda da hizmet verebiliyoruz.</p>
           <ul class="cv-feats">
             <li style="--c:#FF8FB3"><i></i><strong>Dondurma vitrini</strong><span>Etkinliğiniz için seçtiğiniz lezzetler</span></li>
             <li style="--c:#A8754A"><i></i><strong>Kahve bar</strong><span>Espressolu imza lezzetlerimiz ve kahve</span></li>
