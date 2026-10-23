@@ -593,6 +593,52 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
 @media (max-width:900px){.cv-top{grid-template-columns:1fr;gap:30px}.cv-form-wrap{grid-template-columns:1fr}}
 @media (max-width:640px){.cv-steps{grid-template-columns:1fr;margin-top:44px}.cv-feats{grid-template-columns:1fr}form.cv-form{grid-template-columns:1fr;padding:18px}}
 
+/* ---------- 3D karavan: ortak ---------- */
+.hero3d{position:relative;z-index:2;min-width:0;width:100%;display:flex;flex-direction:column;gap:12px}
+.cv3d{position:relative;width:100%;aspect-ratio:4/3;max-width:100%;border:2.5px solid var(--ink);border-radius:24px;overflow:hidden;background:#E9ECEF;box-shadow:8px 8px 0 var(--ink);transition:background-color .6s}
+.cv3d[hidden]{display:none}
+.cv3d.night{background:#12141A}
+.cv3d canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
+.cv3d canvas.hot{cursor:pointer}
+.cv3d-poster{position:absolute;inset:0;display:grid;place-items:center;padding:6% 4% 10%}
+.cv3d-poster svg{width:100%;height:auto;display:block}
+.cv3d-poster span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-size:13px;font-weight:800;color:var(--ink-soft)}
+.cv3d-logo{position:absolute;left:18px;top:16px;width:clamp(84px,18%,128px);height:auto;z-index:2;pointer-events:none;transition:filter .6s}
+.cv3d.night .cv3d-logo{filter:invert(1)}
+.cv3d-pop{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-family:var(--font-display);font-size:22px;background:var(--milk);border:2.5px solid var(--ink);border-radius:999px;padding:4px 16px;box-shadow:3px 3px 0 var(--pink);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s;z-index:3}
+.cv3d-pop.show{opacity:1}
+.cv3d-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px;font-weight:700;color:var(--ink-soft)}
+.cv3d-bar[hidden]{display:none}
+.tbtn{font-family:var(--font-body);font-weight:900;font-size:14px;border:2px solid var(--ink);background:var(--milk);color:var(--ink);border-radius:999px;padding:7px 13px;min-height:40px;cursor:pointer}
+.tbtn:hover{background:#F4F2F0}
+.tbtn[aria-pressed="true"]{background:var(--ink);color:var(--milk)}
+/* karavanını tasarla */
+.cfg-panel{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.cfg-panel[hidden]{display:none}
+.cfg-title{font-family:var(--font-display);font-size:28px;line-height:1.1}
+.cfg-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cfg-label{font-weight:900;font-size:14px;min-width:120px}
+.sw2{width:40px;height:40px;border-radius:50%;border:2.5px solid var(--ink);cursor:pointer;background:repeating-linear-gradient(90deg,var(--c) 0 8px,#fff 8px 16px)}
+.sw2[aria-pressed="true"]{box-shadow:0 0 0 3px var(--milk),0 0 0 6px var(--ink)}
+.cfg-panel select{font:inherit;font-weight:800;font-size:15px;border:2px solid var(--ink);border-radius:12px;padding:8px 10px;background:var(--milk);color:var(--ink);min-height:40px}
+.cfg-file{font:inherit;font-size:14px;font-weight:700;max-width:100%}
+.cfg-file::file-selector-button{font-family:var(--font-body);font-weight:900;border:2px solid var(--ink);background:var(--milk);border-radius:999px;padding:7px 13px;margin-right:10px;cursor:pointer}
+#cfgPanel .cfg-text{margin:0;font-size:15px;font-weight:700;color:var(--ink-soft);max-width:52ch}
+#cfgLogoMsg{margin:0;font-size:13px;font-weight:800;color:var(--ink-soft);min-height:0}
+@media (max-width:860px){.hero.play .wrap{grid-template-columns:1fr}.hero3d{order:-1}}
+@media (max-width:640px){.cv3d{aspect-ratio:1/1}.cfg-label{min-width:100%}}
+
+/* Giriş: hareketli büyük logo */
+.hero-brand{position:relative;z-index:2;justify-self:center;width:min(460px,100%);aspect-ratio:1/0.9;display:grid;place-items:center}
+.hero-brand .float{position:absolute}
+.brand-logo{position:relative;width:86%;cursor:pointer;transform-origin:50% 90%;animation:boing 1.1s .1s cubic-bezier(.3,1.6,.5,1) both}
+.brand-logo img{display:block;width:100%;height:auto}
+.brand-logo:hover,.brand-logo.wig{animation:wiggle .6s ease-in-out}
+.brand-logo .lid{position:absolute;left:52.6%;top:24.6%;width:13.8%;height:14.2%;background:#151414;border-radius:50%;transform:scaleY(0);transform-origin:50% 0;animation:blink 4.2s 1.4s infinite}
+@keyframes blink{0%,90%,100%{transform:scaleY(0)}93%,95%{transform:scaleY(1)}}
+@media (max-width:860px){.hero.play .wrap{grid-template-columns:1fr}.hero-brand{order:-1;width:min(300px,78%)}}
+
+@media (max-width:860px){.hero .spot.more{display:none}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -606,9 +652,9 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
   <div class="wrap">
     <a class="brand" href="#top" aria-label="OptiBean ana sayfa"><img src="img/logo.png" alt=""><span>OptiBean</span></a>
     <nav class="links" aria-label="Bölümler">
+      <a href="#karavan">Karavan</a>
       <a href="#lezzetler">Lezzetler</a>
       <a href="#hikaye">Hikâyemiz</a>
-      <a href="#karavan">Karavan</a>
       <a href="#ziyaret">Adres</a>
       <a class="btn small" href="#siparis">Sipariş ver</a>
     </nav>
@@ -622,93 +668,47 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
     <div class="spot" style="width:64px;height:50px;left:46%;top:26px"></div>
     <div class="spot" style="width:44px;height:36px;left:8%;bottom:40px;border-radius:50% 40% 55% 45%"></div>
     <div class="spot" style="width:120px;height:90px;right:30%;bottom:-50px;border-radius:55% 45% 40% 60% / 50% 55% 45% 50%"></div>
-    <div class="spot" style="width:38px;height:30px;left:40%;bottom:28%"></div>
+    <div class="spot" style="width:38px;height:30px;left:47%;bottom:30%"></div>
+    <div class="spot more" style="width:90px;height:66px;left:52%;top:6%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
+    <div class="spot more" style="width:46px;height:36px;right:22%;top:4%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
+    <div class="spot more" style="width:70px;height:56px;right:3%;top:18%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
+    <div class="spot more" style="width:34px;height:28px;right:12%;top:44%;border-radius:50% 40% 55% 45%"></div>
+    <div class="spot more" style="width:28px;height:22px;left:50%;top:40%;border-radius:45% 55% 60% 40% / 55% 45% 55% 45%"></div>
+    <div class="spot more" style="width:58px;height:44px;right:34%;bottom:12%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
+    <div class="spot more" style="width:22px;height:18px;left:58%;bottom:22%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
+    <div class="spot more" style="width:40px;height:32px;right:2%;bottom:30%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
+    <div class="spot more" style="width:54px;height:70px;left:1%;top:42%;border-radius:50% 40% 55% 45%"></div>
+    <div class="spot more" style="width:26px;height:22px;left:3%;bottom:8%;border-radius:45% 55% 60% 40% / 55% 45% 55% 45%"></div>
+    <div class="spot more" style="width:36px;height:26px;left:28%;top:3%;border-radius:58% 42% 61% 39% / 47% 58% 42% 53%"></div>
+    <div class="spot more" style="width:48px;height:34px;left:44%;bottom:4%;border-radius:44% 56% 38% 62% / 55% 41% 59% 45%"></div>
+    <div class="spot more" style="width:20px;height:16px;right:44%;top:16%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
+    <div class="spot more" style="width:24px;height:20px;right:16%;bottom:6%;border-radius:50% 40% 55% 45%"></div>
     <div class="wrap">
       <div>
         <div class="status" id="status"><i></i><span>Her gün 11.00–24.00</span></div>
         <h1>Optimizm, <span class="scoop-word">külahta.</span></h1>
-        <p class="lead">31 lezzet, espressolu imza dondurmalar ve 11 yaşında dondurma yapmaya başlayan birinin tarifleri. Çekmeköy Aydınlar Mahallesi'nde her gün gece yarısına kadar sizi bekliyoruz.</p>
+        <p class="lead">31 lezzet, espressolu imza dondurmalar ve 11 yaşında dondurma yapmaya başlayan birinin tarifleri. Çekmeköy Aydınlar Mahallesi'nde her gün gece yarısına kadar sizi bekliyoruz. Çok yakında dondurma karavanımızla etkinliklerinizdeyiz.</p>
         <div class="actions">
-          <a class="btn" href="#lezzetler">Lezzetleri gör</a>
-          <a class="btn ghost" href="#siparis">Sipariş ver</a>
+          <a class="btn" href="#karavan">Karavanı keşfet</a>
+          <a class="btn ghost" href="#lezzetler">Lezzetler</a>
         </div>
       </div>
-      <div class="tower">
-        <div class="tower-deco" aria-hidden="true">
-          <div class="backdrop"></div>
-          <div class="cspot" style="width:92px;height:70px;left:-4%;top:22%"></div>
-          <div class="cspot" style="width:60px;height:46px;right:2%;top:12%;border-radius:45% 55% 60% 40% / 55% 45% 55% 45%"></div>
-          <div class="cspot" style="width:110px;height:80px;right:-8%;bottom:20%;border-radius:60% 40% 45% 55% / 50% 60% 40% 50%"></div>
-          <div class="cspot" style="width:44px;height:34px;left:10%;bottom:12%"></div>
-          <div class="cspot" style="width:30px;height:24px;left:24%;top:8%;border-radius:50%"></div>
-          <div class="mini" style="--c:#B9E3A1;left:2%;bottom:34%;animation-delay:-1.5s"></div>
-          <div class="mini" style="--c:#FFD36E;right:4%;top:36%;animation-delay:-3s;--rot:12deg"></div>
-          <div class="mini" style="--c:#6C7BD9;right:14%;bottom:4%;animation-delay:-4.2s;--rot:-14deg;width:40px"></div>
-          <div class="sprinkles" id="sprinkles"></div>
+      <div class="hero-brand" aria-hidden="true">
+        <div class="float" style="--c:#FF8FB3;--rot:-10deg;left:-2%;top:8%;animation-delay:-1s"></div>
+        <div class="float" style="--c:#B9E3A1;--rot:8deg;right:0;top:-4%;animation-delay:-3s"></div>
+        <div class="float" style="--c:#FFD36E;--rot:-4deg;right:6%;bottom:2%;width:58px;animation-delay:-2s"></div>
+        <div class="float" style="--c:#9B5BC8;--rot:12deg;left:6%;bottom:-2%;width:50px;animation-delay:-4s"></div>
+        <div class="brand-logo" id="brandLogo">
+          <img src="img/logo.png" alt="" width="560" height="455">
+          <span class="lid"></span>
         </div>
-        <div class="bubble" id="bubble">Külaha dokunun, bir top ekleyin!</div>
-        <button type="button" class="tower-stage" id="towerStage" aria-label="Külaha rastgele bir lezzet ekle">
-          <div class="stack" id="stack"></div>
-          <svg class="cone" viewBox="0 0 150 180" aria-hidden="true">
-            <path d="M8 14 L75 176 L142 14 Z" fill="#EDB96B" stroke="#151414" stroke-width="5" stroke-linejoin="round"/>
-            <defs><clipPath id="coneClip"><path d="M8 14 L75 176 L142 14 Z"/></clipPath></defs><g clip-path="url(#coneClip)"><path d="M20 30 L100 130 M50 20 L130 120 M0 60 L80 160 M90 20 L20 110 M130 20 L50 150 M150 50 L80 150" stroke="#151414" stroke-width="3" opacity=".35"/></g>
-            <rect x="2" y="6" width="146" height="20" rx="10" fill="#E3A957" stroke="#151414" stroke-width="5"/>
-          </svg>
-        </button>
-        <div class="tower-count"><strong id="towerN">0</strong> top · <span id="towerLast">karışık</span></div>
+      </div>
       </div>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
 
-
-  <section class="block" id="lezzetler">
-    <div class="wrap">
-      <div class="head">
-        <div>
-          <div class="eyebrow">Menü</div>
-          <h2>Lezzetlerimiz</h2>
-          <p>Meyvelilerden klasiklere, espressolu imza lezzetlerden vegan seçeneklere kadar herkesin damak zevkine uygun bir lezzetimiz var.</p>
-        </div>
-        <div class="filters" role="group" aria-label="Lezzet kategorisi" id="filters"></div>
-      </div>
-      <div class="grid" id="grid"></div>
-      <p class="grid-note">Fiyat ve stok bilgisi için bizi arayabilirsiniz: <strong>0539 301 34 12</strong></p>
-    </div>
-  </section>
-
-  <section class="coffee">
-    <div class="wrap">
-      <div class="beans" aria-hidden="true"><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div></div>
-      <div>
-        <div class="eyebrow">Kahve köşesi</div>
-        <h2>Kahve bazlı dondurmalar</h2>
-        <p>Klasik dondurmalarımızın yanında espressoyla hazırladığımız üç imza lezzetimiz var: esmer şekerli <strong>Brown Sugar Theory</strong>, çikolatalı <strong>Midnight Mocha</strong> ve karamelli <strong>Golden Hour</strong>. Kahveyi de dondurmayı da sevenler için hazırladık.</p>
-        <a class="btn" href="#lezzetler" id="showCoffee">Kahveli lezzetleri gör</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block story" id="hikaye">
-    <div class="wrap">
-      <div>
-        <div class="eyebrow">Hikâyemiz</div>
-        <h2>Her şey <span class="big11" aria-label="11">11</span> yaşında başladı</h2>
-        <p>OptiBean, kahveyi ve dondurmayı çok seven bir gencin hikâyesi. İlk dondurmasını 11 yaşında yaptı, ilk satışını da aynı yıl gerçekleştirdi. O günden bu yana tarifleri üzerinde çalışıyor, yeni lezzetler deniyor ve her gün bir öncekinden daha iyisini yapmak için uğraşıyor.</p>
-        <p>Bugün vitrinimizde 31 lezzet bulunuyor. Meyveli, klasik, kahve bazlı ve vegan çeşitlerimizin hepsini aynı özen ve merakla hazırlıyoruz.</p>
-        <figure class="story-photo"><img src="img/kutu-2.webp" alt="İki OptiBean kutusu, renk renk dondurma topları" loading="lazy" width="900" height="1200"></figure>
-      </div>
-      <div>
-        <div class="eyebrow">Adımızın anlamı</div>
-        <div class="name-split" style="margin-top:14px">
-          <div class="name-part"><strong>Opti</strong><span>Optimizm. Bir külah dondurmanın herkesin gününü güzelleştirebileceğine inanıyoruz.</span></div>
-          <div class="name-part"><strong>Bean</strong><span>Çekirdek. Dondurmalarımıza kıvamını veren salep çekirdeği ve kahveli lezzetlerimizdeki kahve çekirdeği.</span></div>
-          <div class="name-part"><strong>=</strong><span>Optimizmle salep çekirdeğinin uyumu. İkisini aynı külahta buluşturduk.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="block caravan-sec" id="karavan">
     <div class="wrap">
@@ -782,6 +782,14 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
           </g>
         </svg>
           <div class="road" aria-hidden="true"></div>
+          <div class="cv3d" id="cfg3d" role="group" aria-label="Karavanın önünde logonuz: 3D önizleme" hidden><div class="cv3d-pop" aria-live="polite"></div></div>
+          <div class="cfg-panel" id="cfgPanel" hidden>
+            <div class="cfg-title">Logonuz karavanda</div>
+            <p class="cfg-text">Kurumsal etkinliklerde karavanın önündeki logo alanına şirketinizin logosunu yerleştiriyoruz. Logonuzu yükleyin, nasıl görüneceğine bakın.</p>
+            <div class="cfg-row"><label class="cfg-label" for="cfgLogo">Şirket logonuz</label><input class="cfg-file" type="file" id="cfgLogo" accept="image/*"><button type="button" class="tbtn" id="cfgLogoRemove" hidden>Logoyu kaldır</button></div>
+            <p id="cfgLogoMsg" aria-live="polite"></p>
+            <div><button type="button" class="btn" id="cfgQuote">Logomla teklif iste</button></div>
+          </div>
         </div>
         <div class="cv-text">
           <span class="soon">Çok yakında</span>
@@ -842,6 +850,54 @@ form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;b
       </div>
     </div>
   </section>
+
+  <section class="block" id="lezzetler">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Menü</div>
+          <h2>Lezzetlerimiz</h2>
+          <p>Meyvelilerden klasiklere, espressolu imza lezzetlerden vegan seçeneklere kadar herkesin damak zevkine uygun bir lezzetimiz var.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Lezzet kategorisi" id="filters"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <p class="grid-note">Fiyat ve stok bilgisi için bizi arayabilirsiniz: <strong>0539 301 34 12</strong></p>
+    </div>
+  </section>
+
+  <section class="coffee">
+    <div class="wrap">
+      <div class="beans" aria-hidden="true"><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div><div class="bean"></div></div>
+      <div>
+        <div class="eyebrow">Kahve köşesi</div>
+        <h2>Kahve bazlı dondurmalar</h2>
+        <p>Klasik dondurmalarımızın yanında espressoyla hazırladığımız üç imza lezzetimiz var: esmer şekerli <strong>Brown Sugar Theory</strong>, çikolatalı <strong>Midnight Mocha</strong> ve karamelli <strong>Golden Hour</strong>. Kahveyi de dondurmayı da sevenler için hazırladık.</p>
+        <a class="btn" href="#lezzetler" id="showCoffee">Kahveli lezzetleri gör</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block story" id="hikaye">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Hikâyemiz</div>
+        <h2>Her şey <span class="big11" aria-label="11">11</span> yaşında başladı</h2>
+        <p>OptiBean, kahveyi ve dondurmayı çok seven bir gencin hikâyesi. İlk dondurmasını 11 yaşında yaptı, ilk satışını da aynı yıl gerçekleştirdi. O günden bu yana tarifleri üzerinde çalışıyor, yeni lezzetler deniyor ve her gün bir öncekinden daha iyisini yapmak için uğraşıyor.</p>
+        <p>Bugün vitrinimizde 31 lezzet bulunuyor. Meyveli, klasik, kahve bazlı ve vegan çeşitlerimizin hepsini aynı özen ve merakla hazırlıyoruz.</p>
+        <figure class="story-photo"><img src="img/kutu-2.webp" alt="İki OptiBean kutusu, renk renk dondurma topları" loading="lazy" width="900" height="1200"></figure>
+      </div>
+      <div>
+        <div class="eyebrow">Adımızın anlamı</div>
+        <div class="name-split" style="margin-top:14px">
+          <div class="name-part"><strong>Opti</strong><span>Optimizm. Bir külah dondurmanın herkesin gününü güzelleştirebileceğine inanıyoruz.</span></div>
+          <div class="name-part"><strong>Bean</strong><span>Çekirdek. Dondurmalarımıza kıvamını veren salep çekirdeği ve kahveli lezzetlerimizdeki kahve çekirdeği.</span></div>
+          <div class="name-part"><strong>=</strong><span>Optimizmle salep çekirdeğinin uyumu. İkisini aynı külahta buluşturduk.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <section class="block visit" id="ziyaret">
     <div class="wrap">
@@ -990,54 +1046,7 @@ document.getElementById("showCoffee").addEventListener("click", () => {
 const names = FLAVORS.map(f => `<span>${f.name}</span>`).join("");
 document.getElementById("marquee").innerHTML = names + names;
 
-// Giriş oyunu: külaha dokundukça rastgele lezzetlerden top düşer
-(function(){
-  const stage = document.getElementById("towerStage"), stack = document.getElementById("stack"),
-        nEl = document.getElementById("towerN"), last = document.getElementById("towerLast"),
-        bubble = document.getElementById("bubble");
-  const MAX = 6;
-  const BALL = `<svg viewBox="10 28 80 50" aria-hidden="true"><path d="M14 58 C12 26 88 26 86 58 C86 63 82 66 78 64 C77 72 70 74 67 66 C63 76 55 76 53 67 C50 74 42 75 40 67 C36 73 29 71 28 65 C23 69 15 66 14 58 Z" fill="var(--c)" stroke="#151414" stroke-width="3.5" stroke-linejoin="round"/><ellipse cx="34" cy="42" rx="7" ry="4" fill="#fff" opacity=".7" transform="rotate(-25 34 42)"/></svg>`;
-  let count = 0, busy = false, prev = -1;
-  function pick(){ let k; do { k = Math.floor(Math.random() * FLAVORS.length); } while (k === prev); prev = k; return FLAVORS[k]; }
-  function add(f, animate){
-    const el = document.createElement("div");
-    el.className = "ball" + (animate ? " drop" : "");
-    el.style.setProperty("--c", f.c);
-    el.style.setProperty("--i", count);
-    el.style.setProperty("--x", ((Math.random() * 14) - 7).toFixed(1) + "px");
-    el.style.setProperty("--r", ((Math.random() * 12) - 6).toFixed(1) + "deg");
-    el.style.zIndex = 10 + count;
-    el.innerHTML = BALL;
-    stack.appendChild(el);
-    count++; nEl.textContent = count; last.textContent = f.name;
-  }
-  function reset(){
-    busy = true; stack.classList.add("tumble");
-    setTimeout(() => { stack.innerHTML = ""; stack.classList.remove("tumble"); count = 0; busy = false; add(pick(), true); }, 900);
-  }
-  stage.addEventListener("click", () => {
-    if (busy) return;
-    if (count >= MAX) { reset(); return; }
-    add(pick(), true);
-    stage.classList.remove("wob"); void stage.offsetWidth; stage.classList.add("wob");
-  });
-  // Sayfa açılırken hazır 3 top (hareketsiz halde de görünür)
-  for (let k = 0; k < 3; k++) add(pick(), false);
-})();
 
-// Kule çevresine şekerleme serpintisi ve mini dondurmalar
-(function(){
-  document.querySelectorAll(".mini").forEach(el => el.innerHTML = SCOOP);
-  const box = document.getElementById("sprinkles");
-  const cols = ["#FF8FB3","#FFD36E","#B9E3A1","#6C7BD9","#FF9A3C","#FFFFFF"];
-  let html = "";
-  for (let k = 0; k < 26; k++) {
-    const x = Math.random() * 100, y = Math.random() * 100;
-    if (x > 30 && x < 70 && y > 15 && y < 92) { k--; continue; }   // külahın önünü boş bırak
-    html += `<i style="left:${x}%;top:${y}%;background:${cols[k % cols.length]};--a:${Math.floor(Math.random()*180)}deg;animation-delay:${(-Math.random()*3.5).toFixed(2)}s"></i>`;
-  }
-  box.innerHTML = html;
-})();
 
 // Karavan: görünür olunca yoldan gelir, dokununca korna çalar
 (function(){
@@ -1050,7 +1059,7 @@ document.getElementById("marquee").innerHTML = names + names;
     }, { rootMargin: "0px 0px 8% 0px" });
     io.observe(scene);
   }
-  const honk = () => { scene.classList.remove("honk"); void scene.offsetWidth; scene.classList.add("honk"); };
+  const honk = () => { if (!scene.hasAttribute("role")) return; scene.classList.remove("honk"); void scene.offsetWidth; scene.classList.add("honk"); };
   scene.addEventListener("click", honk);
   scene.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); honk(); } });
   scene.addEventListener("animationend", e => { if (e.animationName === "honk") scene.classList.remove("honk"); });
@@ -1107,6 +1116,393 @@ document.getElementById("marquee").innerHTML = names + names;
     const sel = () => { const r = document.createRange(); r.selectNodeContents(msgEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copied.textContent = "Mesaj seçildi, kopyalayabilirsiniz."; };
     try { navigator.clipboard.writeText(text).then(() => copied.textContent = "Mesaj kopyalandı.", sel); } catch(e) { sel(); }
   });
+})();
+
+// ---------- OptiBean 3D karavan (ortak yapı) ----------
+const OB3D = (() => {
+  const PINK = "#FF8FB3", INK = "#151414";
+  const DISPLAY = '"Bagel Fat One", "Arial Rounded MT Bold", sans-serif', BODY = 'Nunito, "Segoe UI", sans-serif';
+  // vitrindeki 12 kova: üst sıra ve alt sıra, soldan sağa
+  const TUBS = [
+    ["Mango", "#FFBE3D"], ["Böğürtlen", "#9B5BC8"], ["Antep Fıstığı", "#A8C66C"], ["Çilek", "#FF7A90"], ["Çikolata", "#6B3E26"], ["Vanilya", "#FFF0C2"],
+    ["Vişne", "#B3263E"], ["Yaban Mersini", "#3D8BD9"], ["Matcha", "#B5D94A"], ["Şeftali", "#FFAE85"], ["Oreo", "#8A8A8A"], ["Dadu", "#B0204F"]
+  ];
+  let libP = null, assetsP = null;
+  const loadScript = src => new Promise((ok, bad) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = bad; document.head.appendChild(s); });
+  function hasGL(){ try { const c = document.createElement("canvas"); return !!(c.getContext("webgl") || c.getContext("experimental-webgl")); } catch(e) { return false; } }
+  function lib(){
+    if (!libP) libP = (async () => {
+      if (!window.THREE) await loadScript("https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js");
+      if (!window.THREE.OrbitControls) await loadScript("https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js");
+      return window.THREE;
+    })();
+    return libP;
+  }
+  function assets(){
+    if (!assetsP) assetsP = (async () => {
+      const logoB = await new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = "img/logo.png"; });
+      let logoW = null;
+      if (logoB) { const c = document.createElement("canvas"); c.width = logoB.naturalWidth; c.height = logoB.naturalHeight; const g = c.getContext("2d"); g.drawImage(logoB, 0, 0); g.globalCompositeOperation = "source-in"; g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); logoW = c; }
+      try { await Promise.race([document.fonts.load('60px "Bagel Fat One"'), new Promise(r => setTimeout(r, 2000))]); } catch(e) {}
+      return { logoB, logoW };
+    })();
+    return assetsP;
+  }
+
+  function create(box, opts){
+    opts = opts || {};
+    const THREE = window.THREE, { logoB, logoW } = opts.assets;
+    const LOGO_AR = logoB ? logoB.naturalHeight / logoB.naturalWidth : 0.81;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    box.insertBefore(renderer.domElement, box.firstChild);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, 4 / 3, 0.1, 100);
+    camera.position.set(3.2, 2.6, 8.4);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    renderer.domElement.style.touchAction = "pan-y";
+    controls.enableZoom = false; controls.enablePan = false; controls.enableDamping = true; controls.dampingFactor = 0.08;
+    controls.minPolarAngle = Math.PI * 0.25; controls.maxPolarAngle = Math.PI * 0.49; controls.autoRotateSpeed = 1.2;
+    controls.target.set(0, 1.3, 0);
+
+    const hemi = new THREE.HemisphereLight(0xffffff, 0xb9b2ac, 0.75); scene.add(hemi);
+    const sun = new THREE.DirectionalLight(0xffffff, 1.15); sun.position.set(4, 8, 6); sun.castShadow = true;
+    sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6, near: 1, far: 25 }); sun.shadow.bias = -0.0005;
+    scene.add(sun);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.35); fill.position.set(-6, 4, -5); scene.add(fill);
+    const shadowGround = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.18 }));
+    shadowGround.rotation.x = -Math.PI / 2; shadowGround.receiveShadow = true; scene.add(shadowGround);
+    const disc = new THREE.Mesh(new THREE.CircleGeometry(5, 64), new THREE.MeshStandardMaterial({ color: 0xD9DDE1, roughness: 1 }));
+    disc.rotation.x = -Math.PI / 2; disc.position.y = -0.002; disc.receiveShadow = true; scene.add(disc);
+
+    const rig = new THREE.Group(); scene.add(rig);
+    const hop = new THREE.Group(); rig.add(hop);
+
+    const prof = new THREE.Shape();
+    prof.moveTo(0.256, 0.55); prof.lineTo(4.289, 0.55); prof.quadraticCurveTo(4.633, 0.55, 4.644, 0.9); prof.lineTo(4.667, 1.611);
+    prof.quadraticCurveTo(4.689, 2.378, 4.133, 2.478); prof.lineTo(0.422, 2.522); prof.quadraticCurveTo(0.022, 2.511, 0.011, 2.111);
+    prof.lineTo(0, 0.789); prof.quadraticCurveTo(0, 0.55, 0.256, 0.55);
+    const MINX = 0, MAXX = 4.69, MINY = 0.55, MAXY = 2.525, LEN = 4.69, CX = 2.345;
+    const toX = x => x - CX;
+    const std = (color, o) => new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.5, metalness: 0.05 }, o || {}));
+    const add = (geo, mat, x, y, z, parent) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; (parent || hop).add(m); return m; };
+
+    const bodyGeo = new THREE.ExtrudeGeometry(prof, { depth: 1.9, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.05, bevelSegments: 4, curveSegments: 32 });
+    bodyGeo.translate(-CX, 0, -0.95);
+    add(bodyGeo, std(0xffffff, { roughness: 0.35 }), 0, 0, 0);
+
+    const S = 360, CW = Math.ceil(LEN * S), CH = Math.ceil((MAXY - MINY) * S);
+    const canvasTex = (w, h) => { const c = document.createElement("canvas"); c.width = w; c.height = h; return [c, c.getContext("2d")]; };
+    function blob(ctx, cx, cy, rx, ry, seed){ let s = seed; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280; const n = 9, p = [];
+      for (let i = 0; i < n; i++){ const a = i / n * Math.PI * 2, k = 0.78 + rnd() * 0.38; p.push([cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k]); }
+      ctx.beginPath(); for (let i = 0; i <= n; i++){ const a = p[i % n], b = p[(i + 1) % n], m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; if (i === 0) ctx.moveTo(m[0], m[1]); else ctx.quadraticCurveTo(a[0], a[1], m[0], m[1]); } ctx.closePath(); ctx.fill(); }
+    function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+    function scoop2d(ctx, cx, cy, w, color){ const k = w / 72; ctx.save(); ctx.translate(cx - 50 * k, cy - 50 * k); ctx.scale(k, k);
+      const p = new Path2D("M14 58 C12 26 88 26 86 58 C86 63 82 66 78 64 C77 72 70 74 67 66 C63 76 55 76 53 67 C50 74 42 75 40 67 C36 73 29 71 28 65 C23 69 15 66 14 58 Z");
+      ctx.fillStyle = color; ctx.fill(p); ctx.lineWidth = 3.4; ctx.strokeStyle = INK; ctx.lineJoin = "round"; ctx.stroke(p); ctx.restore(); }
+    function bean(ctx, cx, cy, r, rot){ ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot); ctx.fillStyle = "#6B3E26"; ctx.strokeStyle = INK; ctx.lineWidth = r * 0.16;
+      ctx.beginPath(); ctx.ellipse(0, 0, r * 0.72, r, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -r * 0.82); ctx.bezierCurveTo(-r * 0.3, -r * 0.3, r * 0.3, r * 0.3, 0, r * 0.82); ctx.stroke(); ctx.restore(); }
+
+    function drawSide(left){
+      const [c, g] = canvasTex(CW, CH), [ec, eg] = canvasTex(Math.ceil(CW / 2), Math.ceil(CH / 2));
+      eg.fillStyle = "#000"; eg.fillRect(0, 0, ec.width, ec.height);
+      const X = x => left ? (MAXX - x) * S : (x - MINX) * S, Y = y => (MAXY - y) * S, L = m => m * S;
+      g.fillStyle = "#fff"; g.fillRect(0, 0, CW, CH);
+      g.fillStyle = PINK; g.fillRect(0, Y(0.82), CW, CH - Y(0.82)); g.fillStyle = INK; g.fillRect(0, Y(0.82) - L(0.012), CW, L(0.024));
+      g.beginPath(); g.ellipse(X(2.19), Y(0.55), L(0.72), L(0.44), 0, Math.PI, 0); g.fill();
+      const spots = left ? [[4.33,1.24,.2,.17],[1.25,1.0,.14,.1],[0.1,1.5,.1,.17],[3.72,0.98,.12,.09],[2.75,2.47,.13,.06],[4.62,0.98,.07,.1]]
+                         : [[0.42,1.62,.22,.18],[0.3,0.98,.12,.1],[3.52,2.33,.17,.12],[3.52,1.08,.13,.15],[4.56,0.98,.08,.12],[1.9,2.42,.12,.06]];
+      spots.forEach((s, i) => blob(g, X(s[0]), Y(s[1]), L(s[2]), L(s[3]), 17 + i * 31));
+      function glass(x0, x1, y0, y1){ const xa = Math.min(X(x0), X(x1)), w = Math.abs(X(x1) - X(x0)); const gr = g.createLinearGradient(0, Y(y1), 0, Y(y0)); gr.addColorStop(0, "#9FC4D6"); gr.addColorStop(1, "#E3F2F8");
+        rr(g, xa, Y(y1), w, Y(y0) - Y(y1), L(0.06)); g.fillStyle = gr; g.fill(); g.lineWidth = L(0.028); g.strokeStyle = INK; g.stroke(); }
+      glass(3.79, 4.156, 1.844, 2.378); glass(4.2, 4.533, 1.844, 2.389); if (!left) glass(0.144, 0.611, 2.022, 2.378);
+      if (!left){
+        if (logoB) g.drawImage(logoB, X(3.567), Y(1.7), L(0.955), L(0.955 * LOGO_AR));
+        rr(g, X(4.233), Y(0.767), L(0.156), L(0.134), L(0.02)); g.fillStyle = "#C9CDD1"; g.fill(); g.lineWidth = L(0.014); g.strokeStyle = INK; g.stroke();
+        const hx0 = X(0.8), hx1 = X(3.244), hy0 = Y(2.122), hy1 = Y(1.044);
+        rr(g, hx0, hy0, hx1 - hx0, hy1 - hy0, L(0.05)); g.fillStyle = "#2A2321"; g.fill();
+        g.fillStyle = "#FFE9A8"; g.fillRect(hx0 + L(0.08), hy0 + L(0.05), hx1 - hx0 - L(0.16), L(0.02));
+        g.save(); g.font = `${L(0.21)}px ${DISPLAY}`; g.textAlign = "center"; g.textBaseline = "middle"; g.shadowColor = PINK; g.shadowBlur = L(0.06); g.fillStyle = "#FFD1E0"; g.fillText("OptiBean", X(2.0), Y(1.84)); g.restore();
+        rr(g, X(0.911), Y(1.6), L(1.567), L(0.467), L(0.04)); g.fillStyle = "#4A3F3B"; g.fill(); g.lineWidth = L(0.016); g.strokeStyle = "#C9CDD1"; g.stroke();
+        rr(g, X(2.589), Y(1.522), L(0.5), L(0.378), L(0.03)); g.fillStyle = "#C9CDD1"; g.fill(); g.lineWidth = L(0.014); g.strokeStyle = INK; g.stroke();
+        g.fillStyle = INK; g.fillRect(X(2.66), Y(1.3), L(0.07), L(0.1)); g.fillRect(X(2.9), Y(1.3), L(0.07), L(0.1));
+        g.beginPath(); g.arc(X(2.84), Y(1.42), L(0.04), 0, Math.PI * 2); g.fill();
+        g.fillStyle = "#C9CDD1"; g.fillRect(hx0 + L(0.05), Y(1.1), hx1 - hx0 - L(0.1), L(0.05));
+        rr(g, hx0, hy0, hx1 - hx0, hy1 - hy0, L(0.05)); g.lineWidth = L(0.03); g.strokeStyle = INK; g.stroke();
+        const ex = x => X(x) / 2, ey = y => Y(y) / 2, el = m => L(m) / 2;
+        eg.save(); eg.font = `${el(0.21)}px ${DISPLAY}`; eg.textAlign = "center"; eg.textBaseline = "middle"; eg.shadowColor = PINK; eg.shadowBlur = el(0.08); eg.fillStyle = "#FFC2D6"; eg.fillText("OptiBean", ex(2.0), ey(1.84)); eg.fillText("OptiBean", ex(2.0), ey(1.84)); eg.restore();
+        eg.fillStyle = "#FFE9A8"; eg.fillRect(ex(0.88), ey(2.07), el(2.28), el(0.02)); eg.fillStyle = "rgba(255,240,220,.35)"; eg.fillRect(ex(0.92), ey(1.59), el(1.55), el(0.45));
+      } else {
+        rr(g, X(0.844), Y(2.122), L(0.533), L(1.511), L(0.06)); g.fillStyle = "#fff"; g.fill(); g.lineWidth = L(0.026); g.strokeStyle = INK; g.stroke();
+        rr(g, X(0.756), Y(2.022), L(0.356), L(0.39), L(0.05)); g.fillStyle = "#CFE6EF"; g.fill(); g.lineWidth = L(0.02); g.stroke();
+        g.fillStyle = INK; rr(g, X(0.38), Y(1.32), L(0.05), L(0.19), L(0.02)); g.fill();
+        if (logoB) g.drawImage(logoB, X(3.367), Y(2.411), L(1.889), L(1.889 * LOGO_AR));
+        scoop2d(g, X(1.144), Y(2.3), L(0.4), "#B9E3A1"); scoop2d(g, X(3.62), Y(1.36), L(0.34), PINK); scoop2d(g, X(1.06), Y(1.47), L(0.3), "#FFD36E"); scoop2d(g, X(3.62), Y(2.22), L(0.27), "#9B5BC8");
+        bean(g, X(1.6), Y(1.95), L(0.12), 0.45); bean(g, X(1.55), Y(1.2), L(0.09), -0.5); bean(g, X(3.25), Y(0.98), L(0.08), 0.7); bean(g, X(3.62), Y(1.8), L(0.1), -0.3);
+        g.font = `${L(0.17)}px ${DISPLAY}`; g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = INK; g.fillText("Optimizm, külahta.", X(2.35), Y(0.685));
+      }
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      const et = new THREE.CanvasTexture(ec); et.encoding = THREE.sRGBEncoding; return [t, et];
+    }
+    function sideDecal(left){
+      const geo = new THREE.ShapeGeometry(prof, 32), pos = geo.attributes.position, uv = geo.attributes.uv;
+      for (let i = 0; i < pos.count; i++){ const u = (pos.getX(i) - MINX) / (MAXX - MINX), v = (pos.getY(i) - MINY) / (MAXY - MINY); uv.setXY(i, left ? 1 - u : u, v); }
+      geo.translate(-CX, 0, left ? -1.0035 : 1.0035);
+      const [t, et] = drawSide(left);
+      const mat = new THREE.MeshStandardMaterial({ map: t, roughness: 0.38, side: THREE.DoubleSide, emissive: new THREE.Color(0xffffff), emissiveMap: left ? null : et, emissiveIntensity: 0 });
+      const m = new THREE.Mesh(geo, mat); m.receiveShadow = true; hop.add(m); return mat;
+    }
+    const rightMat = sideDecal(false); sideDecal(true);
+
+    function panel(w, h, draw, ppm){ const [c, g] = canvasTex(Math.ceil(w * ppm), Math.ceil(h * ppm)); draw(g, c.width, c.height);
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({ map: t, transparent: true, roughness: 0.4 })); m.userData.canvas = c; m.userData.tex = t; return m; }
+    const glassMat = std(0x1D2A33, { roughness: 0.08, metalness: 0.4 });
+    add(new THREE.BoxGeometry(0.03, 0.46, 1.62), glassMat, toX(4.635), 2.118, 0).rotation.z = 0.393;
+    const lampMat = std(0xFFD36E, { emissive: new THREE.Color(0xFFD36E), emissiveIntensity: 0 });
+    [-0.66, 0.66].forEach(z => { add(new THREE.CylinderGeometry(0.115, 0.115, 0.06, 28), lampMat, toX(4.72), 1.17, z).rotation.z = Math.PI / 2;
+      add(new THREE.TorusGeometry(0.118, 0.018, 10, 28), std(INK), toX(4.745), 1.17, z).rotation.y = Math.PI / 2; });
+    const fl = panel(0.62, 0.62, () => {}, 500);
+    function drawFront(img){
+      const c = fl.userData.canvas, g = c.getContext("2d"), w = c.width, h = c.height;
+      g.clearRect(0, 0, w, h);
+      if (!img){ g.fillStyle = INK; g.beginPath(); g.arc(w / 2, h / 2, w / 2 - 2, 0, Math.PI * 2); g.fill(); if (logoW) g.drawImage(logoW, w * 0.17, h * 0.5 - w * 0.33 * LOGO_AR, w * 0.66, w * 0.66 * LOGO_AR); }
+      else {
+        g.fillStyle = "#fff"; g.beginPath(); g.arc(w / 2, h / 2, w / 2 - 8, 0, Math.PI * 2); g.fill(); g.lineWidth = 14; g.strokeStyle = INK; g.stroke();
+        g.save(); g.beginPath(); g.arc(w / 2, h / 2, w / 2 - 16, 0, Math.PI * 2); g.clip();
+        const box = w * 0.62, r = Math.min(box / img.width, box / img.height), iw = img.width * r, ih = img.height * r; g.drawImage(img, (w - iw) / 2, (h - ih) / 2, iw, ih); g.restore();
+      }
+      fl.userData.tex.needsUpdate = true;
+    }
+    drawFront(null);
+    fl.position.set(toX(4.716), 1.3, 0); fl.rotation.y = Math.PI / 2; hop.add(fl);
+    add(new THREE.BoxGeometry(0.14, 0.14, 1.94), std(PINK), toX(4.63), 0.66, 0);
+    add(new THREE.BoxGeometry(0.03, 0.26, 1.0), glassMat, toX(-0.06), 1.98, 0);
+    const rt = panel(1.7, 0.72, (g, w, h) => { g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = INK; g.font = `${h * 0.25}px ${DISPLAY}`; g.fillText("@optibean.ice", w / 2, h * 0.2);
+      g.fillStyle = "#4A4645"; g.font = `900 ${h * 0.13}px ${BODY}`; g.fillText("Etkinlikleriniz için", w / 2, h * 0.5); g.fillStyle = INK; g.font = `${h * 0.25}px ${DISPLAY}`; g.fillText("0539 301 34 12", w / 2, h * 0.8); }, 600);
+    rt.position.set(toX(-0.056), 1.42, 0); rt.rotation.y = -Math.PI / 2; hop.add(rt);
+    add(new THREE.BoxGeometry(0.06, 0.27, 1.98), std(PINK), toX(-0.065), 0.69, 0);
+    const tailMat = std(0xE0455F, { emissive: new THREE.Color(0xE0455F), emissiveIntensity: 0.05 });
+    [-0.82, 0.82].forEach(z => add(new THREE.BoxGeometry(0.05, 0.24, 0.14), tailMat, toX(-0.075), 1.02, z));
+    const plate = panel(0.52, 0.12, (g, w, h) => { g.fillStyle = "#fff"; g.fillRect(0, 0, w, h); g.strokeStyle = INK; g.lineWidth = 6; g.strokeRect(3, 3, w - 6, h - 6); g.fillStyle = "#2B59C3"; g.fillRect(3, 3, w * 0.1, h - 6);
+      g.fillStyle = INK; g.font = `900 ${h * 0.6}px ${BODY}`; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("34 PLAKA", w * 0.55, h * 0.54); }, 500);
+    plate.position.set(toX(-0.1), 0.69, 0); plate.rotation.y = -Math.PI / 2; hop.add(plate);
+
+    const steel = std(0x2A2A2A, { metalness: 0.5, roughness: 0.4 });
+    add(new THREE.BoxGeometry(3.9, 0.1, 1.6), std(0x222020, { roughness: 0.7 }), toX(2.3), 0.5, 0);
+    const tireMat = std(0x1B1B1B, { roughness: 0.9 }), rimMat = std(0xC9CDD1, { metalness: 0.6, roughness: 0.3 });
+    const wheels = [];
+    [1.856, 2.522].forEach(x => [-0.89, 0.89].forEach(z => { const t = add(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 36), tireMat, toX(x), 0.3, z, rig); t.rotation.x = Math.PI / 2; wheels.push(t);
+      add(new THREE.CylinderGeometry(0.15, 0.15, 0.205, 28), rimMat, toX(x), 0.3, z, rig).rotation.x = Math.PI / 2; }));
+    function beam(a, b, r, mat, parent){ const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b), d = B.clone().sub(A); const m = add(new THREE.CylinderGeometry(r, r, d.length(), 12), mat, 0, 0, 0, parent);
+      m.position.copy(A).add(B).multiplyScalar(0.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.normalize()); return m; }
+    beam([toX(4.3), 0.48, 0.6], [toX(5.45), 0.45, 0], 0.04, steel, rig); beam([toX(4.3), 0.48, -0.6], [toX(5.45), 0.45, 0], 0.04, steel, rig);
+    add(new THREE.BoxGeometry(0.22, 0.12, 0.14), steel, toX(5.52), 0.45, 0, rig);
+    beam([toX(5.1), 0.48, 0.18], [toX(5.1), 0.12, 0.18], 0.035, steel, rig);
+    add(new THREE.CylinderGeometry(0.09, 0.09, 0.06, 20), std(0xffffff), toX(5.1), 0.09, 0.18, rig).rotation.x = Math.PI / 2;
+    [[0.25, 0.75], [0.25, -0.75]].forEach(([x, z]) => { beam([toX(x), 0.5, z], [toX(x), 0.03, z], 0.03, steel, rig); add(new THREE.BoxGeometry(0.14, 0.02, 0.14), steel, toX(x), 0.02, z, rig); });
+
+    // servis tarafı
+    const ZS = 1.0, frameMat = std(INK, { roughness: 0.6 });
+    add(new THREE.BoxGeometry(2.5, 0.05, 0.05), frameMat, toX(2.022), 2.135, ZS + 0.02); add(new THREE.BoxGeometry(2.5, 0.05, 0.05), frameMat, toX(2.022), 1.035, ZS + 0.02);
+    add(new THREE.BoxGeometry(0.05, 1.14, 0.05), frameMat, toX(0.79), 1.585, ZS + 0.02); add(new THREE.BoxGeometry(0.05, 1.14, 0.05), frameMat, toX(3.254), 1.585, ZS + 0.02);
+    add(new THREE.BoxGeometry(2.56, 0.05, 0.32), std(0xC99A64, { roughness: 0.65 }), toX(2.022), 1.03, ZS + 0.17);
+    [0.95, 3.1].forEach(x => { add(new THREE.BoxGeometry(0.04, 0.2, 0.04), steel, toX(x), 0.92, ZS + 0.12).rotation.x = -0.6; });
+    const hatchHit = new THREE.Mesh(new THREE.BoxGeometry(2.5, 1.15, 0.08), new THREE.MeshBasicMaterial({ visible: false })); hatchHit.position.set(toX(2.022), 1.585, ZS + 0.05); hop.add(hatchHit);
+
+    // vitrindeki 3D kovalar
+    const tubs = [];
+    TUBS.forEach(([name, color], i) => {
+      const row = i < 6 ? 0 : 1, col = i % 6, xc = 0.966 + col * 0.244 + 0.105;
+      const h = row ? 0.18 : 0.12, yc = row ? 1.27 : 1.45;
+      const mat = std(color, { roughness: 0.6, emissive: new THREE.Color(color), emissiveIntensity: 0 });
+      const m = add(new THREE.BoxGeometry(0.21, h, 0.03), mat, toX(xc), yc, ZS + 0.025);
+      m.castShadow = false; m.userData = { tub: i, baseZ: ZS + 0.025, name, color, mat }; tubs.push(m);
+    });
+
+    // tente
+    const [ac, ag] = canvasTex(1024, 256);
+    function paintAwning(col){ for (let i = 0; i < 16; i++){ ag.fillStyle = i % 2 ? "#FFFFFF" : col; ag.fillRect(i * 64, 0, 64, 256); } atex.needsUpdate = true; }
+    const atex = new THREE.CanvasTexture(ac); atex.encoding = THREE.sRGBEncoding; paintAwning(PINK);
+    const awnMat = new THREE.MeshStandardMaterial({ map: atex, roughness: 0.6 });
+    const awnPivot = new THREE.Group(); awnPivot.position.set(toX(2.022), 2.14, ZS + 0.03); hop.add(awnPivot);
+    const awn = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.04, 0.95), [frameMat, frameMat, awnMat, awnMat, frameMat, frameMat]); awn.position.z = 0.475; awn.castShadow = true; awnPivot.add(awn);
+    const OPEN = -0.42, CLOSED = Math.PI / 2 - 0.02; let awnTarget = opts.open ? OPEN : CLOSED; awnPivot.rotation.x = awnTarget;
+    const lights = new THREE.Group(); hop.add(lights);
+    const bulbMat = new THREE.MeshStandardMaterial({ color: 0xFFE7A0, emissive: new THREE.Color(0xFFD36E), emissiveIntensity: 0.4, roughness: 0.3 });
+    const edgeZ = ZS + 0.03 + 0.95 * Math.cos(-OPEN), edgeY = 2.14 + 0.95 * Math.sin(-OPEN), wire = [];
+    for (let i = 0; i < 13; i++){ const t = i / 12, p = [toX(0.85 + t * 2.34), edgeY - 0.04 - Math.sin(t * Math.PI) * 0.17, edgeZ - 0.03]; wire.push(new THREE.Vector3(...p)); add(new THREE.SphereGeometry(0.035, 12, 10), bulbMat, p[0], p[1] - 0.04, p[2], lights); }
+    lights.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(wire), 48, 0.006, 6), std(INK)));
+    [0.9, 3.15].forEach(x => beam([toX(x), 1.45, ZS + 0.04], [toX(x), 2.14 + 0.5 * Math.sin(-OPEN), ZS + 0.03 + 0.5 * Math.cos(-OPEN)], 0.012, steel, lights));
+    lights.visible = !!opts.open;
+    const glowA = new THREE.PointLight(0xFFC98A, 0, 4, 2); glowA.position.set(toX(1.4), 1.9, ZS + 0.7); hop.add(glowA);
+    const glowB = new THREE.PointLight(0xFFC98A, 0, 4, 2); glowB.position.set(toX(2.7), 1.9, ZS + 0.7); hop.add(glowB);
+
+    // çatıdaki külah
+    const coneGroup = new THREE.Group(); coneGroup.position.set(toX(2.078), 2.62, 0); hop.add(coneGroup);
+    add(new THREE.CylinderGeometry(0.3, 0.32, 0.1, 36), std(PINK), 0, -0.05, 0, coneGroup);
+    const [cc, cg] = canvasTex(256, 256); cg.fillStyle = "#EDB96B"; cg.fillRect(0, 0, 256, 256); cg.strokeStyle = "rgba(120,72,30,.55)"; cg.lineWidth = 6;
+    for (let i = -256; i < 512; i += 32){ cg.beginPath(); cg.moveTo(i, 0); cg.lineTo(i + 256, 256); cg.stroke(); cg.beginPath(); cg.moveTo(i + 256, 0); cg.lineTo(i, 256); cg.stroke(); }
+    const ctex = new THREE.CanvasTexture(cc); ctex.encoding = THREE.sRGBEncoding; ctex.wrapS = ctex.wrapT = THREE.RepeatWrapping; ctex.repeat.set(3, 1);
+    const coneMat = new THREE.MeshStandardMaterial({ map: ctex, roughness: 0.75, side: THREE.DoubleSide });
+    add(new THREE.ConeGeometry(0.3, 0.62, 40, 1, true), coneMat, 0, 0.31, 0, coneGroup).rotation.x = Math.PI;
+    const scoopMat = std(PINK, { roughness: 0.55 });
+    add(new THREE.SphereGeometry(0.36, 40, 28), scoopMat, 0, 0.74, 0, coneGroup).scale.set(1, 0.86, 1);
+    for (let i = 0; i < 10; i++){ const a = i / 10 * Math.PI * 2; add(new THREE.SphereGeometry(0.075 + (i % 3) * 0.015, 16, 12), scoopMat, Math.cos(a) * 0.31, 0.58 - (i % 2) * 0.05, Math.sin(a) * 0.31, coneGroup); }
+
+    // ayaklı menü panosu
+    const menuTex = (() => { const [c, g] = canvasTex(600, 900);
+      g.fillStyle = INK; g.fillRect(0, 0, 600, 900); g.fillStyle = PINK; g.fillRect(30, 30, 540, 10);
+      if (logoW) g.drawImage(logoW, 190, 60, 220, 220 * LOGO_AR);
+      g.fillStyle = "#fff"; g.textAlign = "center"; g.font = `52px ${DISPLAY}`; g.fillText("Bugün karavanda", 300, 300);
+      g.textAlign = "left"; g.font = `800 30px ${BODY}`;
+      const order = [0, 6, 1, 7, 2, 8, 3, 9, 4, 10, 5, 11];
+      order.forEach((k, i) => { const [n, col] = TUBS[k]; const x = i % 2 ? 320 : 50, y = 370 + Math.floor(i / 2) * 62; g.fillStyle = col; g.beginPath(); g.arc(x + 14, y - 10, 13, 0, Math.PI * 2); g.fill(); g.fillStyle = "#fff"; g.fillText(n, x + 40, y); });
+      g.fillStyle = PINK; g.font = `40px ${DISPLAY}`; g.textAlign = "center"; g.fillText("Kahve bar", 300, 780);
+      g.fillStyle = "#CFC9C6"; g.font = `800 24px ${BODY}`; g.fillText("Brown Sugar Theory · Midnight Mocha · Golden Hour", 300, 830);
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t; })();
+    const menuGroup = new THREE.Group(); menuGroup.position.set(toX(-0.15), 0, 1.75); menuGroup.rotation.y = 0.5; rig.add(menuGroup);
+    const menuFace = new THREE.MeshStandardMaterial({ map: menuTex, roughness: 0.6 });
+    [1, -1].forEach(s => { const b = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.95, 0.03), [frameMat, frameMat, frameMat, frameMat, menuFace, menuFace]);
+      b.castShadow = true; b.position.set(0, 0.47, s * 0.12); b.rotation.x = -s * 0.24; if (s < 0) b.rotation.y = Math.PI; menuGroup.add(b); });
+
+    // kurumsal logo alanı (sol yan)
+    let logoSlot = null;
+    function drawSlot(img){
+      const g = logoSlot.userData.canvas.getContext("2d"), w = logoSlot.userData.canvas.width, h = logoSlot.userData.canvas.height;
+      g.clearRect(0, 0, w, h); rr(g, 6, 6, w - 12, h - 12, 36); g.fillStyle = "#fff"; g.fill(); g.lineWidth = 10; g.strokeStyle = INK;
+      if (!img){ g.setLineDash([28, 18]); g.stroke(); g.setLineDash([]); g.fillStyle = "#4A4645"; g.textAlign = "center"; g.textBaseline = "middle"; g.font = `${h * 0.12}px ${DISPLAY}`; g.fillText("Logonuz", w / 2, h * 0.44); g.font = `800 ${h * 0.065}px ${BODY}`; g.fillText("burada olabilir", w / 2, h * 0.58); }
+      else { g.stroke(); const pad = w * 0.1, bw = w - pad * 2, bh = h - pad * 2, r = Math.min(bw / img.width, bh / img.height); const iw = img.width * r, ih = img.height * r; g.drawImage(img, (w - iw) / 2, (h - ih) / 2, iw, ih); }
+      logoSlot.userData.tex.needsUpdate = true;
+    }
+    if (opts.logoSlot){ logoSlot = panel(1.05, 1.0, () => {}, 500); logoSlot.position.set(toX(1.55), 1.72, -1.008); logoSlot.rotation.y = Math.PI; hop.add(logoSlot); drawSlot(null); }
+
+    // zemindeki OptiBean paspası
+    if (opts.mat){
+      const [mc, mg] = canvasTex(512, 512);
+      mg.fillStyle = INK; mg.beginPath(); mg.arc(256, 256, 252, 0, Math.PI * 2); mg.fill();
+      mg.fillStyle = PINK; mg.beginPath(); mg.arc(256, 256, 236, 0, Math.PI * 2); mg.fill();
+      mg.fillStyle = INK; mg.beginPath(); mg.arc(256, 256, 196, 0, Math.PI * 2); mg.fill();
+      if (logoW) mg.drawImage(logoW, 256 - 150, 256 - 150 * LOGO_AR - 6, 300, 300 * LOGO_AR);
+      const mt = new THREE.CanvasTexture(mc); mt.encoding = THREE.sRGBEncoding; mt.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      const mat = new THREE.Mesh(new THREE.CircleGeometry(0.85, 64), new THREE.MeshStandardMaterial({ map: mt, roughness: 0.9 }));
+      mat.rotation.x = -Math.PI / 2; mat.position.set(toX(2.0), 0.004, 2.35); mat.receiveShadow = true; scene.add(mat);
+    }
+
+    // durum
+    let night = false;
+    function applyLight(){
+      const open = awnTarget === OPEN;
+      hemi.intensity = night ? 0.18 : 0.75; sun.intensity = night ? 0.12 : 1.15; fill.intensity = night ? 0.08 : 0.35;
+      disc.material.color.set(night ? 0x2A2D33 : 0xD9DDE1); shadowGround.material.opacity = night ? 0.05 : 0.18;
+      rightMat.emissiveIntensity = open ? (night ? 1.6 : 0.25) : 0;
+      bulbMat.emissiveIntensity = night ? 3.2 : 0.4; lampMat.emissiveIntensity = night ? 1.5 : 0; tailMat.emissiveIntensity = night ? 0.9 : 0.05;
+      glowA.intensity = glowB.intensity = (night && open) ? 2.2 : 0;
+      renderer.toneMappingExposure = night ? 1.25 : 1.05; box.classList.toggle("night", night);
+    }
+    const pop = box.querySelector(".cv3d-pop"); let popT = 0;
+    function say(t){ if (!pop) return; pop.textContent = t; pop.classList.add("show"); clearTimeout(popT); popT = setTimeout(() => pop.classList.remove("show"), 1500); }
+
+    // anlık animasyonlar
+    let wobble = 0, hopT = 0, spin = 0, anim = null; const ticks = [];
+    const views = { servis: [[3.2, 2.6, 8.4], [0, 1.3, 0]], grafik: [[-2.6, 2.4, -8.6], [0, 1.3, 0]], on: [[8.8, 2.3, 2.8], [0.4, 1.3, 0]], arka: [[-8.0, 2.2, 3.0], [0, 1.3, 0]],
+                    capraz: [[7.6, 2.5, 5.6], [0.5, 1.3, 0]] };
+    if (opts.view) { const [p, t] = views[opts.view]; camera.position.set(...p); controls.target.set(...t); }
+    function goTo(id){ const [p, t] = views[id]; anim = { from: camera.position.clone(), to: new THREE.Vector3(...p), tf: controls.target.clone(), tt: new THREE.Vector3(...t), t0: performance.now(), d: reduce ? 1 : 900 }; }
+    controls.addEventListener("start", () => { anim = null; });
+    const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+    const shown = o => { for (let q = o; q; q = q.parent){ if (!q.visible) return false; } return true; };
+    function pick(e){ const r = renderer.domElement.getBoundingClientRect(); ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1); ray.setFromCamera(ptr, camera);
+      const hits = ray.intersectObjects(rig.children, true).filter(h => shown(h.object)); if (!hits.length) return null;
+      for (const h of hits){ const o = h.object; if (o.userData && o.userData.tub !== undefined) return { type: "tub", tub: o.userData.tub }; if (o === hatchHit) return { type: "hatch" };
+        for (let p = o; p; p = p.parent){ if (p === coneGroup) return { type: "cone" }; if (p === awnPivot) return { type: "hatch" }; if (p === menuGroup) return { type: "menu" }; if (p === fl) return { type: "logo" }; }
+        return { type: "body" }; }
+      return null; }
+    let down = null, onPick = null, hoverable = () => true;
+    renderer.domElement.addEventListener("pointerdown", e => { down = [e.clientX, e.clientY]; });
+    renderer.domElement.addEventListener("pointerup", e => { if (!down) return; const moved = Math.hypot(e.clientX - down[0], e.clientY - down[1]); down = null; if (moved > 6 || !onPick) return; const t = pick(e); if (t) onPick(t); });
+    renderer.domElement.addEventListener("pointermove", e => { if (e.pointerType !== "mouse" || e.buttons) return; const t = pick(e); renderer.domElement.classList.toggle("hot", !!(t && hoverable(t))); });
+
+    function resize(){ const w = box.clientWidth, h = box.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w / h < 1.1 ? 44 : 32; camera.updateProjectionMatrix(); }
+    window.addEventListener("resize", resize);
+    let visible = true; new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(box);
+    let last = performance.now();
+    renderer.setAnimationLoop(now => {
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (!visible) return;
+      const cur = awnPivot.rotation.x, diff = awnTarget - cur;
+      if (Math.abs(diff) > 0.001) awnPivot.rotation.x = reduce ? awnTarget : cur + diff * Math.min(1, dt * 5);
+      else if (awnTarget === OPEN && !lights.visible){ lights.visible = true; applyLight(); }
+      if (wobble > 0){ wobble = Math.max(0, wobble - dt * 1.4); const s = 1 + Math.sin(wobble * 18) * 0.12 * wobble; coneGroup.scale.set(1 / Math.sqrt(s), s, 1 / Math.sqrt(s)); coneGroup.rotation.z = Math.sin(wobble * 14) * 0.15 * wobble; }
+      if (hopT > 0){ hopT = Math.max(0, hopT - dt * 2.2); hop.position.y = Math.abs(Math.sin(hopT * Math.PI * 2)) * 0.12 * hopT; }
+      if (spin > 0){ spin = Math.max(0, spin - dt * 1.5); wheels.forEach(w => { w.rotation.y += dt * 8 * spin; }); }
+      ticks.forEach(f => f(dt, now));
+      if (anim){ const k = Math.min(1, (now - anim.t0) / anim.d), e = ease(k); camera.position.lerpVectors(anim.from, anim.to, e); controls.target.lerpVectors(anim.tf, anim.tt, e); if (k >= 1) anim = null; }
+      controls.update(); renderer.render(scene, camera);
+    });
+    resize(); applyLight();
+
+    return {
+      THREE, scene, camera, controls, hop, toX, tubs, TUBS, reduce, add, std, ZS,
+      say, goTo, resize, onTick: f => ticks.push(f),
+      setPick: (f, hov) => { onPick = f; if (hov) hoverable = hov; },
+      setNight: v => { night = v; applyLight(); }, isNight: () => night,
+      setOpen: v => { awnTarget = v ? OPEN : CLOSED; if (!v) lights.visible = false; applyLight(); }, isOpen: () => awnTarget === OPEN,
+      setAwningColor: c => paintAwning(c), setScoopColor: c => scoopMat.color.set(c),
+      setLogo: img => drawFront(img),
+      wobble: () => { wobble = 1; }, honk: () => { hopT = 1; spin = 1; }
+    };
+  }
+  return { hasGL, lib, assets, create, TUBS };
+})();
+
+
+// Giriş logosu: dokununca sallanır
+(function(){ const l = document.getElementById("brandLogo"); if (!l) return;
+  l.addEventListener("click", () => { l.classList.remove("wig"); void l.offsetWidth; l.classList.add("wig"); });
+  l.addEventListener("animationend", e => { if (e.animationName === "wiggle") l.classList.remove("wig"); });
+})();
+
+// ---------- Karavan bölümü: logonuz karavanda ----------
+(function(){
+  const box = document.getElementById("cfg3d"), scene2d = document.getElementById("cvScene");
+  if (!box || !scene2d || !OB3D.hasGL() || !window.IntersectionObserver) return;
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: "300px 0px" });
+  io.observe(scene2d);
+  async function start(){ try { await OB3D.lib(); const assets = await OB3D.assets(); init(OB3D.create(box, { assets, open: true, view: "capraz", mat: true })); } catch(e) {} }
+  function init(k){
+    const ui = id => document.getElementById(id);
+    scene2d.querySelector("svg").style.display = "none";
+    const road = scene2d.querySelector(".road"); if (road) road.style.display = "none";
+    scene2d.removeAttribute("role"); scene2d.removeAttribute("tabindex"); scene2d.removeAttribute("aria-label"); scene2d.style.paddingBottom = "0"; scene2d.style.cursor = "default";
+    box.hidden = false; ui("cfgPanel").hidden = false;
+    const hint = document.querySelector(".cv-hint"); if (hint) hint.hidden = true;
+    k.resize();
+    let hasLogo = false;
+    const file = ui("cfgLogo"), msg = ui("cfgLogoMsg"), rm = ui("cfgLogoRemove");
+    file.addEventListener("change", () => {
+      const f = file.files && file.files[0]; if (!f) return;
+      if (!/^image\//.test(f.type)) { msg.textContent = "Lütfen PNG, JPG ya da SVG bir logo seçin."; return; }
+      const r = new FileReader();
+      r.onload = () => { const img = new Image(); img.onload = () => { k.setLogo(img); hasLogo = true; msg.textContent = "Logonuz karavanın önünde. Dosya bu sayfadan dışarı gönderilmez."; rm.hidden = false; k.goTo("on"); }; img.onerror = () => { msg.textContent = "Bu dosya açılamadı. Başka bir görsel deneyin."; }; img.src = r.result; };
+      r.readAsDataURL(f);
+    });
+    rm.addEventListener("click", () => { k.setLogo(null); hasLogo = false; file.value = ""; rm.hidden = true; msg.textContent = ""; k.goTo("capraz"); });
+    k.setPick(t => { if (t.type === "logo") file.click(); }, t => t.type === "logo");
+    ui("cfgQuote").addEventListener("click", () => {
+      const note = document.getElementById("cvNote");
+      const line = hasLogo ? "Karavanın önüne kurumsal logomuzu eklemek istiyoruz (logomuzu ayrıca göndereceğiz)." : "Karavanın önüne kurumsal logomuzu eklemek istiyoruz.";
+      if (note){ note.value = (note.value.replace(/Karavanın önüne kurumsal logomuzu[^\n]*\n?/g, "").trim() + (note.value.trim() ? "\n" : "") + line).trim(); }
+      const form = document.getElementById("cvForm"); if (form) { form.scrollIntoView({ behavior: k.reduce ? "auto" : "smooth", block: "start" }); setTimeout(() => { const n = document.getElementById("cvName"); if (n) n.focus({ preventScroll: true }); }, 500); }
+    });
+  }
 })();
 
 // Şu an açık mı? (İstanbul saatiyle 11.00–24.00)
