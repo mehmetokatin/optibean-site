@@ -290,6 +290,82 @@ footer a:hover{text-decoration:underline}
 @keyframes twinkle{0%,100%{transform:rotate(var(--a)) translateY(0)}50%{transform:rotate(calc(var(--a) + 25deg)) translateY(-6px)}}
 @media (max-width:860px){.tower-deco{inset:-20px -10px -6px}.cspot{transform:scale(.75)}}
 
+/* ---------- Karavan ---------- */
+.caravan-sec{background:var(--milk);border-top:2px solid var(--ink);overflow:hidden}
+.cv-top{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+.cv-top>*{min-width:0}
+.soon{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:var(--pink);border:2.5px solid var(--ink);border-radius:999px;padding:5px 14px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-2deg)}
+.cv-text h2{font-size:clamp(38px,5.4vw,64px);margin:16px 0 14px}
+.cv-text>p{margin:0 0 22px;max-width:52ch;color:var(--ink-soft);font-weight:600}
+.cv-feats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.cv-feats li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
+.cv-feats i{grid-row:span 2;width:14px;height:14px;margin-top:6px;border-radius:50%;border:2.5px solid var(--ink);background:var(--c)}
+.cv-feats strong{font-weight:900;line-height:1.3}
+.cv-feats span{font-size:15px;font-weight:600;color:var(--ink-soft);line-height:1.4}
+
+.cv-scene{position:relative;padding-bottom:26px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cv-scene:focus-visible{outline:3px dashed var(--ink);outline-offset:8px;border-radius:20px}
+.cv-scene svg{display:block;width:100%;height:auto;overflow:visible}
+.road{position:absolute;left:-40px;right:-40px;bottom:0;height:26px;background:var(--ink);border-radius:6px;overflow:hidden}
+.road::after{content:"";position:absolute;left:0;right:-80px;top:11px;height:4px;background:repeating-linear-gradient(90deg,var(--milk) 0 34px,transparent 34px 70px)}
+.cv-scene.go .road::after{animation:roadRun 1.3s cubic-bezier(.2,.7,.3,1) both}
+@keyframes roadRun{from{transform:translateX(-350px)}to{transform:translateX(0)}}
+.rig{transform-box:view-box;transform-origin:50% 100%}
+.cv-scene.go .rig{animation:driveIn 1.35s cubic-bezier(.2,.75,.3,1.05) both}
+@keyframes driveIn{0%{transform:translateX(-115%)}78%{transform:translateX(2%) rotate(-1deg)}90%{transform:translateX(-.6%) rotate(.6deg)}100%{transform:none}}
+.wheel{transform-box:fill-box;transform-origin:center}
+.cv-scene.go .wheel{animation:spin 1.3s cubic-bezier(.2,.7,.3,1) both}
+@keyframes spin{from{transform:rotate(-900deg)}to{transform:rotate(0)}}
+.awning{transform-box:fill-box;transform-origin:50% 0}
+.awning-open{transform:scaleY(-.38)}
+.cv-scene.go .awning{animation:awnOpen .7s 1.35s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes awnOpen{from{transform:scaleY(1)}to{transform:scaleY(-.38)}}
+.tub{transform-box:fill-box;transform-origin:50% 100%}
+.cv-scene.go .tub{animation:tubPop .5s cubic-bezier(.3,1.7,.5,1) both}
+.cv-scene.go .tub:nth-of-type(1){animation-delay:1.85s}.cv-scene.go .tub:nth-of-type(2){animation-delay:1.95s}
+.cv-scene.go .tub:nth-of-type(3){animation-delay:2.05s}.cv-scene.go .tub:nth-of-type(4){animation-delay:2.15s}
+.cv-scene.go .tub:nth-of-type(5){animation-delay:2.25s}
+@keyframes tubPop{from{transform:scale(0)}to{transform:scale(1)}}
+.roof-cone{transform-box:fill-box;transform-origin:50% 100%}
+.cv-scene.honk .roof-cone{animation:wiggle .6s ease-in-out}
+.cv-scene.honk .rig{animation:honk .45s ease-in-out}
+@keyframes honk{0%,100%{transform:none}35%{transform:translateY(-6px) scale(1.01,.98)}70%{transform:translateY(0) scale(.99,1.02)}}
+.cv-hint{margin:12px 0 0;text-align:center;font-size:14px;font-weight:800;color:var(--ink-soft)}
+
+.cv-steps{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+.cv-steps li{counter-increment:step;border:2.5px solid var(--ink);border-radius:var(--r);padding:20px 22px;background:var(--milk);display:grid;gap:6px;min-width:0}
+.cv-steps li::before{content:counter(step);font-family:var(--font-display);font-size:34px;line-height:1;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--milk);margin-bottom:6px}
+.cv-steps strong{font-weight:900;font-size:18px}
+.cv-steps span{font-weight:600;color:var(--ink-soft);font-size:15px}
+
+.cv-form-wrap{margin-top:22px;display:grid;grid-template-columns:1fr 1.4fr;gap:20px;align-items:start}
+.cv-form-wrap>*{min-width:0}
+.cv-aside{background:var(--ink);color:var(--milk);border-radius:var(--r);padding:26px;display:grid;gap:12px}
+.cv-aside h3{font-size:30px}
+.cv-aside p{margin:0;color:#E6E1DE;font-weight:600}
+.cv-aside .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.cv-aside .chips span{font-size:13px;font-weight:800;border:1.5px solid #5A5450;border-radius:999px;padding:4px 12px;color:#F5F1EC}
+form.cv-form{border:2.5px solid var(--ink);border-radius:var(--r);padding:24px;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;box-shadow:6px 6px 0 var(--ink)}
+.field{display:grid;gap:6px;min-width:0}
+.field.wide{grid-column:1/-1}
+.field label{font-weight:900;font-size:14px}
+.field label small{font-weight:700;color:var(--ink-soft)}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;font-weight:600;color:var(--ink);background:var(--milk);border:2px solid var(--ink);border-radius:12px;padding:10px 12px;width:100%;min-width:0}
+.field textarea{resize:vertical;min-height:80px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--pink);outline-offset:1px}
+.field .err{font-size:13px;font-weight:800;color:#B3263E;min-height:0}
+.field.bad input,.field.bad select{border-color:#B3263E}
+.cv-form .actions-row{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cv-form .fine{font-size:13px;font-weight:700;color:var(--ink-soft)}
+.cv-result{grid-column:1/-1;border:2px dashed var(--ink);border-radius:16px;padding:16px;background:var(--milk);display:grid;gap:12px}
+.cv-result pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--font-body);font-weight:700;font-size:15px;line-height:1.5;user-select:all}
+.cv-result .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn.wa{background:#1F9D55;border-color:var(--ink);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.cv-result[hidden]{display:none}
+.cv-result .copied{color:#2F8A4E;min-height:0}
+@media (max-width:900px){.cv-top{grid-template-columns:1fr;gap:30px}.cv-form-wrap{grid-template-columns:1fr}}
+@media (max-width:640px){.cv-steps{grid-template-columns:1fr;margin-top:44px}.cv-feats{grid-template-columns:1fr}form.cv-form{grid-template-columns:1fr;padding:18px}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -305,6 +381,7 @@ footer a:hover{text-decoration:underline}
     <nav class="links" aria-label="Bölümler">
       <a href="#lezzetler">Lezzetler</a>
       <a href="#hikaye">Hikâyemiz</a>
+      <a href="#karavan">Karavan</a>
       <a href="#ziyaret">Adres</a>
       <a class="btn small" href="#siparis">Sipariş ver</a>
     </nav>
@@ -402,6 +479,139 @@ footer a:hover{text-decoration:underline}
           <div class="name-part"><strong>Bean</strong><span>Çekirdek. Dondurmalarımıza kıvamını veren salep çekirdeği ve kahveli lezzetlerimizdeki kahve çekirdeği.</span></div>
           <div class="name-part"><strong>=</strong><span>Optimizmle salep çekirdeğinin uyumu. İkisini aynı külahta buluşturduk.</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block caravan-sec" id="karavan">
+    <div class="wrap">
+      <div class="cv-top">
+        <div class="cv-scene" id="cvScene" role="button" tabindex="0" aria-label="Karavana korna çaldır">
+          <svg viewBox="0 -34 560 344" role="img" aria-labelledby="cvSvgT">
+          <title id="cvSvgT">OptiBean dondurma karavanı çizimi</title>
+          <defs>
+            <clipPath id="cvBody"><path d="M76 92 Q76 52 122 50 L452 50 Q512 52 518 104 L524 236 Q524 258 502 258 L98 258 Q74 258 72 236 Z"/></clipPath>
+            <pattern id="cvStripe" width="36" height="10" patternUnits="userSpaceOnUse"><rect width="18" height="10" fill="#FF8FB3"/><rect x="18" width="18" height="10" fill="#FFFFFF"/></pattern>
+          </defs>
+          <g class="rig">
+            <ellipse cx="300" cy="300" rx="240" ry="10" fill="#151414" opacity=".18"/>
+            <!-- çeki demiri -->
+            <path d="M74 236 L18 252" stroke="#151414" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="16" cy="252" r="8" fill="#151414"/>
+            <path d="M40 246 L40 286" stroke="#151414" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="40" cy="292" r="8" fill="#FFFFFF" stroke="#151414" stroke-width="4"/>
+            <!-- çatıdaki dev külah -->
+            <g class="roof-cone">
+              <path d="M380 12 L404 50 L428 12 Z" fill="#EDB96B" stroke="#151414" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M372 6 C370 -28 438 -28 436 6 C436 11 432 14 428 12 C427 20 420 22 417 14 C413 22 405 22 403 15 C400 22 392 23 390 15 C386 21 379 19 378 13 C373 17 372 12 372 6 Z" fill="#FF8FB3" stroke="#151414" stroke-width="5" stroke-linejoin="round"/>
+              <ellipse cx="390" cy="-10" rx="7" ry="4" fill="#fff" opacity=".7" transform="rotate(-25 390 -10)"/>
+            </g>
+            <!-- gövde -->
+            <path d="M76 92 Q76 52 122 50 L452 50 Q512 52 518 104 L524 236 Q524 258 502 258 L98 258 Q74 258 72 236 Z" fill="#FFFFFF"/>
+            <g clip-path="url(#cvBody)">
+              <rect x="60" y="214" width="480" height="60" fill="#FF8FB3"/>
+              <path d="M60 214 H540" stroke="#151414" stroke-width="4"/>
+              <path d="M458 58 C492 54 516 82 506 112 C498 132 470 128 462 108 C454 90 440 66 458 58 Z" fill="#151414"/>
+              <path d="M214 120 C226 112 240 118 238 132 C236 146 220 148 214 138 Z" fill="#151414"/>
+              <path d="M440 196 C456 188 478 196 474 208 C470 218 446 218 442 210 Z" fill="#151414"/>
+              <path d="M488 160 C504 152 522 160 520 176 C518 192 498 196 490 184 Z" fill="#151414"/>
+              <ellipse cx="236" cy="66" rx="14" ry="9" fill="#151414"/>
+            </g>
+            <path d="M76 92 Q76 52 122 50 L452 50 Q512 52 518 104 L524 236 Q524 258 502 258 L98 258 Q74 258 72 236 Z" fill="none" stroke="#151414" stroke-width="6" stroke-linejoin="round"/>
+            <!-- ön camlar -->
+            <rect x="92" y="70" width="52" height="46" rx="12" fill="#DDEFF5" stroke="#151414" stroke-width="5"/>
+            <rect x="152" y="70" width="52" height="46" rx="12" fill="#DDEFF5" stroke="#151414" stroke-width="5"/>
+            <path d="M102 80 L118 96" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+            <!-- far -->
+            <circle cx="84" cy="200" r="10" fill="#FFD36E" stroke="#151414" stroke-width="4"/>
+            <!-- logo -->
+            <image href="img/logo.png" x="96" y="128" width="112" height="91"/>
+            <!-- servis penceresi -->
+            <rect x="236" y="82" width="250" height="112" rx="10" fill="#2B2422" stroke="#151414" stroke-width="5"/>
+            <rect x="248" y="96" width="140" height="58" rx="6" fill="#3A322F" stroke="#C9CDD1" stroke-width="3"/>
+            <g>
+              <rect class="tub" x="256" y="120" width="22" height="30" rx="4" fill="#FFBE3D" stroke="#151414" stroke-width="2.5"/>
+              <rect class="tub" x="282" y="120" width="22" height="30" rx="4" fill="#9B5BC8" stroke="#151414" stroke-width="2.5"/>
+              <rect class="tub" x="308" y="120" width="22" height="30" rx="4" fill="#A8C66C" stroke="#151414" stroke-width="2.5"/>
+              <rect class="tub" x="334" y="120" width="22" height="30" rx="4" fill="#FF7A90" stroke="#151414" stroke-width="2.5"/>
+              <rect class="tub" x="360" y="120" width="22" height="30" rx="4" fill="#6B3E26" stroke="#151414" stroke-width="2.5"/>
+            </g>
+            <!-- espresso makinesi -->
+            <rect x="406" y="106" width="56" height="48" rx="6" fill="#C9CDD1" stroke="#151414" stroke-width="3"/>
+            <rect x="420" y="138" width="10" height="12" fill="#151414"/>
+            <rect x="438" y="138" width="10" height="12" fill="#151414"/>
+            <circle cx="434" cy="120" r="6" fill="#151414"/>
+            <!-- tezgâh -->
+            <rect x="228" y="158" width="266" height="16" rx="5" fill="#C9CDD1" stroke="#151414" stroke-width="4"/>
+            <rect x="240" y="174" width="242" height="20" fill="#E4E7EA" stroke="#151414" stroke-width="3"/>
+            <!-- tente -->
+            <rect class="awning awning-open" x="230" y="78" width="262" height="118" rx="8" fill="url(#cvStripe)" stroke="#151414" stroke-width="5"/>
+            <!-- tabela -->
+            <rect x="290" y="226" width="150" height="26" rx="13" fill="#FFFFFF" stroke="#151414" stroke-width="3"/>
+            <text x="365" y="244" text-anchor="middle" font-family="Nunito, system-ui, sans-serif" font-weight="900" font-size="14" letter-spacing="2" fill="#151414">DONDURMA</text>
+            <!-- tekerlekler -->
+            <g class="wheel"><circle cx="300" cy="262" r="28" fill="#151414"/><circle cx="300" cy="262" r="12" fill="#C9CDD1"/><path d="M300 238 V250 M300 274 V286 M276 262 H288 M312 262 H324" stroke="#4A4645" stroke-width="4"/></g>
+            <g class="wheel"><circle cx="372" cy="262" r="28" fill="#151414"/><circle cx="372" cy="262" r="12" fill="#C9CDD1"/><path d="M372 238 V250 M372 274 V286 M348 262 H360 M384 262 H396" stroke="#4A4645" stroke-width="4"/></g>
+          </g>
+        </svg>
+          <div class="road" aria-hidden="true"></div>
+        </div>
+        <div class="cv-text">
+          <span class="soon">Çok yakında</span>
+          <h2>OptiBean karavanı yolda</h2>
+          <p>Doğum gününüze, düğününüze, şirket etkinliğinize ya da okul şenliğinize dondurmayı biz getiriyoruz. Karavanımızda dondurma vitrini, espresso makinesi ve paslanmaz servis tezgâhı olacak. Misafirleriniz dondurmalarını ve kahvelerini taze taze karavandan alacak.</p>
+          <ul class="cv-feats">
+            <li style="--c:#FF8FB3"><i></i><strong>Dondurma vitrini</strong><span>Etkinliğiniz için seçtiğiniz lezzetler</span></li>
+            <li style="--c:#A8754A"><i></i><strong>Kahve bar</strong><span>Espressolu imza lezzetlerimiz ve kahve</span></li>
+            <li style="--c:#B9E3A1"><i></i><strong>Servis ekibimiz</strong><span>Kurulumdan toplamaya kadar biz ilgileniyoruz</span></li>
+            <li style="--c:#FFD36E"><i></i><strong>Size özel teklif</strong><span>Fiyat; kişi sayısı, süre ve konuma göre belirlenir</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="cv-hint">Karavana dokunun, korna çalsın!</p>
+
+      <ol class="cv-steps">
+        <li><strong>Ön talebinizi bırakın</strong><span>Aşağıdaki formu doldurun, tarihinizi ve etkinliğinizi öğrenelim.</span></li>
+        <li><strong>Menüyü birlikte planlayalım</strong><span>Lezzetleri, kişi sayısını ve servis süresini sizinle konuşup teklifimizi hazırlayalım.</span></li>
+        <li><strong>Karavan etkinliğinizde</strong><span>Belirlenen gün ve saatte karavanımızla gelip servise başlıyoruz.</span></li>
+      </ol>
+
+      <div class="cv-form-wrap">
+        <div class="cv-aside">
+          <h3>Ön talep bırakın</h3>
+          <p>Karavanımız şu an hazırlanıyor. Etkinlik tarihiniz belliyse şimdiden ön talep bırakabilirsiniz. Karavan hazır olduğunda sizinle iletişime geçeriz.</p>
+          <div class="chips"><span>Doğum günü</span><span>Düğün ve nişan</span><span>Kurumsal etkinlik</span><span>Okul şenliği</span><span>Açılış</span></div>
+        </div>
+        <form class="cv-form" id="cvForm" novalidate>
+          <div class="field"><label for="cvName">Ad soyad</label><input id="cvName" name="name" autocomplete="name" required><span class="err"></span></div>
+          <div class="field"><label for="cvPhone">Telefon</label><input id="cvPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required><span class="err"></span></div>
+          <div class="field"><label for="cvType">Etkinlik türü</label>
+            <select id="cvType" name="type" required>
+              <option value="">Seçin</option>
+              <option>Doğum günü</option><option>Düğün / nişan / kına</option><option>Kurumsal etkinlik</option><option>Okul / şenlik</option><option>Açılış / lansman</option><option>Diğer</option>
+            </select><span class="err"></span></div>
+          <div class="field"><label for="cvDate">Etkinlik tarihi</label><input id="cvDate" name="date" type="date" required><span class="err"></span></div>
+          <div class="field"><label for="cvGuests">Tahmini kişi sayısı</label>
+            <select id="cvGuests" name="guests" required>
+              <option value="">Seçin</option><option>50 kişiye kadar</option><option>50–100 kişi</option><option>100–200 kişi</option><option>200 kişiden fazla</option>
+            </select><span class="err"></span></div>
+          <div class="field"><label for="cvPlace">Etkinlik yeri <small>(ilçe)</small></label><input id="cvPlace" name="place" placeholder="Örneğin Çekmeköy" required><span class="err"></span></div>
+          <div class="field wide"><label for="cvNote">Notunuz <small>(isteğe bağlı)</small></label><textarea id="cvNote" name="note" placeholder="Saat aralığı, istediğiniz lezzetler ya da merak ettikleriniz"></textarea></div>
+          <div class="actions-row">
+            <button class="btn" type="submit">Talebimi hazırla</button>
+            <span class="fine">Bilgileriniz yalnızca size dönüş yapmak için kullanılır.</span>
+          </div>
+          <div class="cv-result" id="cvResult" hidden>
+            <strong>Talebiniz hazır. WhatsApp'tan bize gönderebilirsiniz:</strong>
+            <pre id="cvMsg"></pre>
+            <div class="row">
+              <a class="btn wa" id="cvWa" href="https://wa.me/905393013412" target="_blank" rel="noopener noreferrer">WhatsApp'tan gönder</a>
+              <button class="btn ghost small" type="button" id="cvCopy">Mesajı kopyala</button>
+              <span class="copied" id="cvCopied" aria-live="polite"></span>
+            </div>
+            <span class="fine">WhatsApp açılmazsa mesajı kopyalayıp 0539 301 34 12 numarasına gönderebilir ya da bizi arayabilirsiniz.</span>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -600,6 +810,76 @@ document.getElementById("marquee").innerHTML = names + names;
     html += `<i style="left:${x}%;top:${y}%;background:${cols[k % cols.length]};--a:${Math.floor(Math.random()*180)}deg;animation-delay:${(-Math.random()*3.5).toFixed(2)}s"></i>`;
   }
   box.innerHTML = html;
+})();
+
+// Karavan: görünür olunca yoldan gelir, dokununca korna çalar
+(function(){
+  const scene = document.getElementById("cvScene");
+  if (!scene) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { scene.classList.add("go"); io.disconnect(); } });
+    }, { rootMargin: "0px 0px 8% 0px" });
+    io.observe(scene);
+  }
+  const honk = () => { scene.classList.remove("honk"); void scene.offsetWidth; scene.classList.add("honk"); };
+  scene.addEventListener("click", honk);
+  scene.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); honk(); } });
+  scene.addEventListener("animationend", e => { if (e.animationName === "honk") scene.classList.remove("honk"); });
+})();
+
+// Karavan ön talep formu: mesajı hazırlar, WhatsApp'a yönlendirir
+(function(){
+  const form = document.getElementById("cvForm");
+  if (!form) return;
+  const date = document.getElementById("cvDate");
+  try { date.min = new Date().toISOString().slice(0, 10); } catch(e) {}
+  const result = document.getElementById("cvResult"), msgEl = document.getElementById("cvMsg"),
+        wa = document.getElementById("cvWa"), copied = document.getElementById("cvCopied");
+  const msgs = { name:"Adınızı yazın.", phone:"Size ulaşabileceğimiz bir telefon numarası yazın.", type:"Etkinlik türünü seçin.",
+                 date:"Etkinlik tarihini seçin.", guests:"Tahmini kişi sayısını seçin.", place:"Etkinliğin yapılacağı ilçeyi yazın." };
+  function check(el){
+    const f = el.closest(".field"), err = f.querySelector(".err");
+    let bad = !el.value.trim();
+    if (!bad && el.name === "phone") bad = el.value.replace(/\D/g, "").length < 10;
+    f.classList.toggle("bad", bad);
+    err.textContent = bad ? (el.name === "phone" && el.value.trim() ? "Telefon numarası en az 10 haneli olmalı." : msgs[el.name]) : "";
+    return !bad;
+  }
+  form.querySelectorAll("[required]").forEach(el => el.addEventListener("change", () => check(el)));
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let first = null;
+    form.querySelectorAll("[required]").forEach(el => { if (!check(el) && !first) first = el; });
+    if (first) { first.focus(); result.hidden = true; return; }
+    const v = id => document.getElementById(id).value.trim();
+    let d = v("cvDate");
+    try { d = new Date(d + "T12:00").toLocaleDateString("tr-TR", { day:"numeric", month:"long", year:"numeric" }); } catch(e) {}
+    const lines = [
+      "Merhaba OptiBean, karavan için ön talep bırakmak istiyorum.",
+      "",
+      "Ad soyad: " + v("cvName"),
+      "Telefon: " + v("cvPhone"),
+      "Etkinlik: " + v("cvType"),
+      "Tarih: " + d,
+      "Kişi sayısı: " + v("cvGuests"),
+      "Yer: " + v("cvPlace")
+    ];
+    if (v("cvNote")) lines.push("Not: " + v("cvNote"));
+    const text = lines.join("\n");
+    msgEl.textContent = text;
+    wa.href = "https://wa.me/905393013412?text=" + encodeURIComponent(text);
+    copied.textContent = "";
+    result.hidden = false;
+    result.scrollIntoView({ behavior: reduce() ? "auto" : "smooth", block: "nearest" });
+  });
+  function reduce(){ return matchMedia("(prefers-reduced-motion: reduce)").matches; }
+  document.getElementById("cvCopy").addEventListener("click", () => {
+    const text = msgEl.textContent;
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(msgEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copied.textContent = "Mesaj seçildi, kopyalayabilirsiniz."; };
+    try { navigator.clipboard.writeText(text).then(() => copied.textContent = "Mesaj kopyalandı.", sel); } catch(e) { sel(); }
+  });
 })();
 
 // Şu an açık mı? (İstanbul saatiyle 11.00–24.00)
