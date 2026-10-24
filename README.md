@@ -2,7 +2,7 @@
 
 Çekmeköy/İstanbul'daki **OptiBean** dondurma mağazasının resmi web sitesi. Mağaza bana ait; site gerçek müşterilere hizmet veriyor.
 
-🔗 **Canlı site:** https://mehmetokatin.github.io/optibean-site/
+🔗 **Canlı site:** https://optibean.com.tr/
 
 ![OptiBean ana sayfa](img/ekran-goruntusu.png)
 
